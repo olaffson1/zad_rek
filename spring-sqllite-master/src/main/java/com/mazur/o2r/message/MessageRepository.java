@@ -10,6 +10,9 @@ interface MessageRepository extends CrudRepository<Message, UUID> {
 
   List<Message> findAll();
 
-  @Query("select msg from Message msg order by RAND() LIMIT 10")
-  public List<Message> findRandomQuestions();
+
+  @Query(
+          value = "select * from message WHERE id IN (SELECT id FROM message ORDER BY RANDOM() LIMIT 10)",
+          nativeQuery = true)
+  List<Message> findRandomQuestions();
 }

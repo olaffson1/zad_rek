@@ -28,8 +28,14 @@ public class MessageController {
 
   @GetMapping(path = "", produces = "application/json")
   ResponseEntity<List<Message>> findAll() {
-    log.info("10 Random messages");
+    log.info("Getting all messages");
     return ResponseEntity.ok(messageRepository.findAll());
+  }
+
+  @GetMapping(path = "random", produces = "application/json")
+  ResponseEntity<List<Message>> tenRandom() {
+    log.info("10 Random messages");
+    return ResponseEntity.ok(messageRepository.findRandomQuestions());
   }
 
   @PostMapping
