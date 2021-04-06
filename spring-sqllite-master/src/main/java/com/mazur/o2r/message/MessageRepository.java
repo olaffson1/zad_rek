@@ -10,7 +10,6 @@ interface MessageRepository extends CrudRepository<Message, UUID> {
 
   List<Message> findAll();
 
-
   @Query(
           value = "select * from message WHERE id IN (SELECT id FROM message ORDER BY RANDOM() LIMIT 10)",
           nativeQuery = true)
